@@ -1,17 +1,44 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import App from "./App";
+import NoInternet from "./components/NoInternet";
+import "./index.css";
+import { store } from "./store.js";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const Index = () => {
+  const [isOnline, setIsOnline] = useState(window.navigator.onLine);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  useEffect(() => {
+    const handleOnlineStatusChange = () => {
+      setIsOnline(window.navigator.onLine);
+    };
+    window.addEventListener("online", handleOnlineStatusChange);
+    window.addEventListener("offline", handleOnlineStatusChange);
+    return () => {
+      window.removeEventListener("online", handleOnlineStatusChange);
+      window.removeEventListener("offline", handleOnlineStatusChange);
+    };
+  }, []);
+
+  return isOnline ? (
+    <Provider store={store}>
+      <App />
+      <ToastContainer
+        position="top-right"
+        pauseOnFocusLoss={false}
+        closeOnClick
+        theme="colored"
+      />
+    </Provider>
+  ) : (
+    <NoInternet />
+  );
+};
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Index />);
+
+serviceWorkerRegistration.register();
