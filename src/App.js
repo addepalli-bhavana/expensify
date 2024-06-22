@@ -1,14 +1,12 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
-
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import PageNotFoundPage from "./pages/PageNotFoundPage";
 import Modal from "./components/Modal";
@@ -40,7 +38,7 @@ const App = () => {
   useEffect(() => {
     if (email) {
       const profileData = JSON.parse(localStorage.getItem(email));
-      console.log(profileData);
+
       if (profileData) {
         dispatch(initializeProfile(profileData));
       } else {
@@ -78,7 +76,6 @@ const App = () => {
         <Route exact path="/">
           {isLoggedIn ? <HomePage /> : <Redirect to="/login" />}
         </Route>
-
         <Route exact path="/reset-password">
           {isLoggedIn ? <ResetPasswordPage /> : <Redirect to="/login" />}
         </Route>
@@ -86,7 +83,6 @@ const App = () => {
           <PageNotFoundPage />
         </Route>
       </Switch>
-      )}
       {isLoggedIn && <Footer />}
     </BrowserRouter>
   );

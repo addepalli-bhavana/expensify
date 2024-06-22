@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux"; 
+import { useDispatch, useSelector } from "react-redux";
 import { IoIosSunny } from "react-icons/io";
 import { IoMoonSharp } from "react-icons/io5";
 import { FaUserCircle } from "react-icons/fa";
@@ -10,7 +10,6 @@ import { openSideBar, openOverlay } from "../features/uiSlice";
 
 const Navbar = () => {
   const isLightTheme = useSelector((state) => state.profile.isLightTheme);
-  const { photo } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
   const handleTheme = () => {
@@ -26,8 +25,7 @@ const Navbar = () => {
     <nav>
       <div className="nav-center">
         <Link to="/">
-          <img src={logo} 
-          className="logo" alt="expensify logo" />
+          <img src={logo} className="logo" alt="expensify logo" />
         </Link>
         <div className="theme-and-user-icons">
           <button type="button" className="theme-icon" onClick={handleTheme}>
@@ -38,11 +36,7 @@ const Navbar = () => {
             className="user-icon"
             onClick={handleOpenSidebar}
           >
-            {photo ? (
-              <img src={photo} alt="user" className="photo-vsmall" />
-            ) : (
-              <FaUserCircle />
-            )}
+            <FaUserCircle />
           </button>
         </div>
       </div>

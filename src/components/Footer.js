@@ -21,8 +21,8 @@ const Footer = () => {
           ))}
         </ul>
         <p className="copyright">
-          copyright &copy; addepalli bhavana
-          <span>{new Date().getFullYear()}</span>. all rights reserved
+          copyright &copy; addepalli bhavana 
+           <span> {new Date().getFullYear()}</span>. all rights reserved
         </p>
       </div>
     </footer>

@@ -36,7 +36,7 @@ const LoginPage = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyADBo5Lr5PlcgnCbyp3gLQQeEo_yjFGExM",
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_EXPENSIFY_FIREBASE_API_KEY}`,
         {
           method: "POST",
           body: JSON.stringify({
@@ -62,7 +62,6 @@ const LoginPage = () => {
           email: responseData.email,
         })
       );
-
       localStorage.setItem("token", responseData.idToken);
       localStorage.setItem("email", responseData.email);
       toast.success("Logged in successfully!");

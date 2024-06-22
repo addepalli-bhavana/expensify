@@ -53,7 +53,6 @@ const profileSlice = createSlice({
 });
 export const {
   initializeProfile,
-
   toggleTheme,
   addExpense,
   editExpense,

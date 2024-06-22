@@ -4,7 +4,6 @@ const authSlice = createSlice({
   initialState: {
     token: localStorage.getItem("token"),
     email: localStorage.getItem("email"),
-
     isLoggedIn: !!localStorage.getItem("email"),
   },
   reducers: {

@@ -41,8 +41,6 @@ const Modal = () => {
         description: true,
         amount: true,
         category: true,
-        name: false,
-        photoLink: false,
       })
     ) {
       if (expense) {

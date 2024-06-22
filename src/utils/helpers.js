@@ -66,36 +66,6 @@ export const validateForm = (setErrors, formData, formFields) => {
     }
   }
 
-  if (formFields.name) {
-    console.log(formData.name);
-    if (!formData.name.trim()) {
-      
-      formErrors.name = "Name is required.";
-      isValid = false;
-    } else if (formData.name.length < 3) {
-      formErrors.name = "Name must be at least 3 characters long.";
-      isValid = false;
-    } else if (formData.name.length > 50) {
-      formErrors.name = "Name length cannot exceed 50 characters.";
-      isValid = false;
-    }
-  }
-
-  if (formFields.photoLink) {
-    console.log(formData.photoLink);
-    if (!formData.photoLink) {
-      formErrors.photoLink = "Photo link is required.";
-      isValid = false;
-    } else {
-      const photoLinkRegex = /\.(jpg|jpeg|png)$/i;
-      if (!photoLinkRegex.test(formData.photoLink.name)) {
-        formErrors.photoLink =
-          "Invalid photo link format. Please upload in .png, .jpg, or .jpeg format.";
-        isValid = false;
-      }
-    }
-  }
-
   if (formFields.description) {
     if (!formData.description.trim()) {
       formErrors.description = "Expense description is required.";

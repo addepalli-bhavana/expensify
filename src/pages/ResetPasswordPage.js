@@ -34,14 +34,11 @@ const ResetPasswordPage = () => {
         description: false,
         amount: false,
         category: false,
-        name: false,
-        photoLink: false,
       })
     ) {
       setIsLoading(true);
       try {
-        const url =
-          "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyADBo5Lr5PlcgnCbyp3gLQQeEo_yjFGExM";
+        const url = `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${process.env.REACT_APP_EXPENSIFY_FIREBASE_API_KEY}`;
         const response = await fetch(url, {
           method: "POST",
           body: JSON.stringify({

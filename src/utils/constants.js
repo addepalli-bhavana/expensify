@@ -10,7 +10,6 @@ export const sidebarLinks = [
     label: "expenses",
     url: "/",
   },
-
   {
     id: 2,
     label: "reset password",

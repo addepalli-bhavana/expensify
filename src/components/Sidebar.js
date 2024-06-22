@@ -7,10 +7,10 @@ import logo from "../assets/logo.png";
 import { logoutUser } from "../features/authSlice";
 import { closeOverlay, closeSideBar } from "../features/uiSlice";
 import { sidebarLinks } from "../utils/constants";
+import { toggleTheme } from "../features/profileSlice";
 
 const Sidebar = () => {
   const isSideBarOpen = useSelector((state) => state.ui.isSideBarOpen);
-  const { name, photo } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -25,6 +25,7 @@ const Sidebar = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("email");
     toast.success("Logged out successfully!");
+    dispatch(toggleTheme());
     history.replace("/login");
   };
 
@@ -40,8 +41,8 @@ const Sidebar = () => {
       </div>
 
       <div className="user-info">
-        {photo ? <img src={photo} className="photo-small" /> : <FaUserCircle />}
-        <h5>hii {name ? name : "dear"}</h5>
+        <FaUserCircle />
+        <h5>hii dear</h5>
       </div>
 
       <ul className="sidebar-links">
