@@ -55,7 +55,7 @@ const RegisterPage = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_EXPENSIFY_FIREBASE_API_KEY}`,
+          `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyADBo5Lr5PlcgnCbyp3gLQQeEo_yjFGExM`,
           {
             method: "POST",
             body: JSON.stringify({
